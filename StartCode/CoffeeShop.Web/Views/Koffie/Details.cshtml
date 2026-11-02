@@ -1,0 +1,81 @@
+@* TODO: Vervang de hardgecodeerde data door een ViewModel (@model) en toon de gekozen koffie uit de database. *@
+
+@{
+    ViewData["Title"] = "Cappuccino";
+}
+
+<div class="container my-5">
+    <!-- Terugknop naar overzicht -->
+    <div class="mb-4">
+        <a asp-controller="Koffie" asp-action="Index" class="btn btn-outline-coffee">
+            &larr; Terug naar de menukaart
+        </a>
+    </div>
+
+    <div class="row g-5 align-items-center">
+        <!-- Linkerkolom: Grote foto en beschrijving -->
+        <div class="col-lg-6">
+            <div class="card shadow border-0">
+                <img src="/img/Cappuccino.png" alt="Cappuccino" class="card-img-top rounded-top"
+                     style="height: 400px; object-fit: cover;">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-3">Over deze koffie</h4>
+                    <p class="text-muted lh-base">
+                        De Italiaanse klassieker in perfecte balans: een derde espresso, een derde warme melk en een derde luchtig melkschuim, afgewerkt met een vleugje cacaopoeder.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rechterkolom: Naam, Prijs en Ingrediëntenlijst met Categorieën -->
+        <div class="col-lg-6">
+            <div class="p-4 bg-cream rounded-3 shadow-sm">
+                <span class="badge bg-coffee mb-2">Huisfavoriet</span>
+                <h1 class="display-5 fw-bold text-coffee mb-3">Cappuccino</h1>
+                <h3 class="text-caramel fw-semibold mb-4">€ 3.40</h3>
+
+                @* Toon deze badge enkel wanneer de koffie vegan is: *@
+                @* <span class="badge bg-success mb-2">Vegan</span> *@
+
+                <hr class="my-4">
+
+                <!--
+                    Badge-kleur per categorie:
+                    "Koffiebonen"          => "bg-coffee"
+                    "Melk & Alternatieven" => "bg-light text-dark border"
+                    "Siropen & Smaken"     => "bg-warning text-dark"
+                    "Thee & Kruiden"       => "bg-success"
+                    andere                 => "bg-caramel"
+                -->
+                <h4 class="fw-bold mb-3">Ingrediënten:</h4>
+                <ul class="list-group list-group-flush mb-4 bg-transparent">
+                    <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center py-3">
+                        <!-- Linkerkant: Naam en optioneel vegan icoon netjes naast elkaar -->
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-medium">Espressobonen</span>
+                            <span title="Vegan" style="font-size: 0.9rem;">🌱</span>
+                        </div>
+
+                        <!-- Rechterkant: Categorie badge -->
+                        <span class="badge bg-coffee rounded-pill px-3 py-2">Koffiebonen</span>
+                    </li>
+                    <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center py-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-medium">Volle Melk</span>
+                        </div>
+
+                        <span class="badge bg-light text-dark border rounded-pill px-3 py-2">Melk &amp; Alternatieven</span>
+                    </li>
+                    <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center py-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="fw-medium">Cacaopoeder</span>
+                            <span title="Vegan" style="font-size: 0.9rem;">🌱</span>
+                        </div>
+
+                        <span class="badge bg-caramel rounded-pill px-3 py-2">Toppings &amp; Extra's</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

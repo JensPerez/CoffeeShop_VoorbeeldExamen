@@ -1,0 +1,27 @@
+@model BestellingFormVm
+
+@{
+    ViewData["Title"] = $"Bestelling #{Model.Id} bewerken";
+}
+
+<div class="container my-5">
+    <div class="mb-4">
+        <a asp-controller="Bestelling" asp-action="Index" class="btn btn-outline-coffee">
+            &larr; Terug naar de bestellingen
+        </a>
+    </div>
+
+    <div class="p-4 bg-cream rounded-3 shadow-sm">
+        <h1 class="display-6 fw-bold text-coffee mb-4">Bestelling #@Model.Id bewerken</h1>
+
+        <form asp-controller="Bestelling" asp-action="Edit" asp-route-id="@Model.Id" method="post">
+            <partial name="_BestellingForm" model="Model" />
+
+            <button type="submit" class="btn btn-coffee btn-lg">Wijzigingen opslaan</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

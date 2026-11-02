@@ -1,0 +1,49 @@
+@* TODO: Vervang de hardgecodeerde data door een ViewModel (@model) en toon alle koffies uit de database. *@
+
+@{
+    ViewData["Title"] = "Menukaart";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-coffee">Café Crema</h1>
+        <p class="lead text-muted">Kies hieronder jouw favoriete koffie en plaats je bestelling!</p>
+
+        <form asp-controller="Koffie" asp-action="Index" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    Zoek koffie:
+                    <input name="zoekWaarde">
+                    <input type="submit" value="Zoeken" class="btn btn-coffee" />
+                    <a class="btn btn-outline-coffee" asp-controller="Koffie" asp-action="Index">Terug naar volledige lijst</a>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Onze koffies</h2>
+    </div>
+
+    <!-- Grid van 3 koffies naast elkaar -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <a asp-controller="Koffie" asp-action="Details" asp-route-id="4">
+                    <img src="/img/Cappuccino.png" alt="Cappuccino" class="card-img-top"
+                         style="height: 200px; object-fit: cover;">
+                </a>
+
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Cappuccino</h5>
+                    <p class="card-text text-caramel fs-5 fw-semibold">€ 3.40</p>
+                </div>
+            </div>
+        </div>
+
+        @* Toon deze melding wanneer er geen koffies gevonden zijn: *@
+        @* <p>Geen koffies gevonden!</p> *@
+
+    </div>
+</div>

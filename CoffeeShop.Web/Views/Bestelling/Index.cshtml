@@ -1,0 +1,68 @@
+@model List<BestellingOverzichtVm>
+
+@{
+    ViewData["Title"] = "Bestellingen";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-6 fw-bold text-coffee mb-0">Bestellingen</h1>
+        <a asp-controller="Bestelling" asp-action="Create" class="btn btn-coffee">+ Nieuwe bestelling</a>
+    </div>
+
+    @if (TempData["Melding"] is string melding)
+    {
+        <div class="alert alert-success" role="alert">@melding</div>
+    }
+
+    @if (Model.Any())
+    {
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Datum</th>
+                    <th>Klant</th>
+                    <th>Koffies</th>
+                    <th>Status</th>
+                    <th class="text-end">Leverkosten</th>
+                    <th class="text-end">Totaal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (BestellingOverzichtVm bestelling in Model)
+                {
+                    string badgeClass = bestelling.Status switch
+                    {
+                        "Afgerond" => "bg-success",
+                        "Geannuleerd" => "bg-secondary",
+                        _ => "bg-caramel"
+                    };
+
+                    <tr>
+                        <td>@bestelling.Id</td>
+                        <td>@bestelling.BestelDatum.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@bestelling.KlantNaam</td>
+                        <td>
+                            @foreach (BesteldeKoffieVm koffie in bestelling.BesteldeKoffies)
+                            {
+                                <div class="small">@koffie.Aantal × @koffie.KoffieNaam</div>
+                            }
+                        </td>
+                        <td><span class="badge @badgeClass">@bestelling.Status</span></td>
+                        <td class="text-end">€ @bestelling.Leverkosten.ToString("0.00")</td>
+                        <td class="text-end fw-semibold">€ @bestelling.TotaalPrijs.ToString("0.00")</td>
+                        <td class="text-end">
+                            <a asp-controller="Bestelling" asp-action="Edit" asp-route-id="@bestelling.Id" class="btn btn-sm btn-outline-coffee">Bewerken</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Er zijn nog geen bestellingen.</p>
+    }
+</div>

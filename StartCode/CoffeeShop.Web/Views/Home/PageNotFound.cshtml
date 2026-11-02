@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Pagina niet gevonden";
+}
+
+<div class="container text-center my-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Koffiebar sfeer icoon of emoji -->
+            <div class="display-1 mb-4">☕❌</div>
+
+            <h1 class="fw-bold mb-3">Oeps! Dit kopje is leeg.</h1>
+            <p class="text-muted fs-5 mb-4">
+                De pagina die je zoekt bestaat niet, is verplaatst of onze barista heeft hem per ongeluk opgedronken.
+                Keer snel terug naar onze menukaart om een andere heerlijke koffie te kiezen!
+            </p>
+
+            <div class="d-flex justify-content-center gap-3">
+                <a asp-controller="Koffie" asp-action="Index" class="btn btn-coffee btn-lg px-4 rounded-pill">
+                    Naar de Menukaart ☕
+                </a>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-coffee btn-lg px-4 rounded-pill">
+                    Terug naar Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

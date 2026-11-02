@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container my-5">
+    <!-- Hero -->
+    <div class="p-5 mb-5 bg-cream rounded-4 shadow-sm text-center">
+        <div class="display-1 mb-3">☕</div>
+        <h1 class="display-4 fw-bold text-coffee">Welkom bij Café Crema</h1>
+        <p class="lead text-muted col-lg-8 mx-auto">
+            Ambachtelijk gebrande bonen, zijdezachte melk en barista's met liefde voor het vak.
+            Kom langs voor een snelle espresso of laat je favoriete koffie gewoon bij je thuis leveren.
+        </p>
+        <a asp-controller="Koffie" asp-action="Index" class="btn btn-coffee btn-lg px-4 rounded-pill mt-3">
+            Bekijk de menukaart
+        </a>
+    </div>
+
+    <!-- Troeven -->
+    <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+        <div class="col">
+            <div class="p-4 h-100">
+                <div class="fs-1 mb-2">🫘</div>
+                <h4 class="fw-bold">Vers gebrand</h4>
+                <p class="text-muted">Onze huisblend wordt elke week vers gebrand en pas gemalen wanneer jij bestelt.</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-4 h-100">
+                <div class="fs-1 mb-2">🌱</div>
+                <h4 class="fw-bold">Plantaardige opties</h4>
+                <p class="text-muted">Haver-, soja- of amandelmelk? Elke koffie kan ook volledig vegan.</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-4 h-100">
+                <div class="fs-1 mb-2">🚲</div>
+                <h4 class="fw-bold">Aan huis geleverd</h4>
+                <p class="text-muted">Gratis levering vanaf € 30, zodat je koffie nog warm bij je aankomt.</p>
+            </div>
+        </div>
+    </div>
+</div>

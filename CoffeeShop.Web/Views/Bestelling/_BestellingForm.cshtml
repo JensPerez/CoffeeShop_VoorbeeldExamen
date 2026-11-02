@@ -1,0 +1,56 @@
+@model BestellingFormVm
+
+<div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+<input type="hidden" asp-for="Id" />
+
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <label asp-for="KlantVoorNaam" class="form-label fw-semibold"></label>
+        <input asp-for="KlantVoorNaam" class="form-control" />
+        <span asp-validation-for="KlantVoorNaam" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="KlantAchterNaam" class="form-label fw-semibold"></label>
+        <input asp-for="KlantAchterNaam" class="form-control" />
+        <span asp-validation-for="KlantAchterNaam" class="text-danger"></span>
+    </div>
+
+    @if (Model.Id != 0)
+    {
+        <div class="col-md-6">
+            <label asp-for="Status" class="form-label fw-semibold"></label>
+            <select asp-for="Status" asp-items="@(new SelectList(BestellingFormVm.Statussen))" class="form-select"></select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+    }
+</div>
+
+<h4 class="fw-bold mb-3">Koffies</h4>
+<p class="text-muted">Gratis levering vanaf € 30, anders € 5 leverkosten.</p>
+
+<table class="table align-middle bg-white rounded-3">
+    <thead>
+        <tr>
+            <th>Koffie</th>
+            <th class="text-end">Prijs</th>
+            <th style="width: 140px;">Aantal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Regels.Count; i++)
+        {
+            <tr>
+                <td>
+                    <input type="hidden" asp-for="Regels[i].KoffieId" />
+                    @Model.Regels[i].KoffieNaam
+                </td>
+                <td class="text-end">€ @Model.Regels[i].Prijs.ToString("0.00")</td>
+                <td>
+                    <input asp-for="Regels[i].Aantal" type="number" min="0" max="50" class="form-control form-control-sm" />
+                    <span asp-validation-for="Regels[i].Aantal" class="text-danger small"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

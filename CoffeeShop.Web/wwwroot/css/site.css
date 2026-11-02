@@ -1,0 +1,87 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #c08552;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+/* Café Crema huisstijl */
+:root {
+    --coffee: #4b2e2b;
+    --coffee-dark: #3a2321;
+    --caramel: #c08552;
+    --cream: #fff8f0;
+}
+
+body {
+    background-color: #fffdf9;
+}
+
+.bg-coffee {
+    background-color: var(--coffee) !important;
+    color: #fff;
+}
+
+.bg-caramel {
+    background-color: var(--caramel) !important;
+    color: #fff;
+}
+
+.bg-cream {
+    background-color: var(--cream) !important;
+}
+
+.text-coffee {
+    color: var(--coffee) !important;
+}
+
+.text-caramel {
+    color: var(--caramel) !important;
+}
+
+.btn-coffee {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--coffee);
+    --bs-btn-border-color: var(--coffee);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--coffee-dark);
+    --bs-btn-hover-border-color: var(--coffee-dark);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--coffee-dark);
+    --bs-btn-active-border-color: var(--coffee-dark);
+}
+
+.btn-outline-coffee {
+    --bs-btn-color: var(--coffee);
+    --bs-btn-border-color: var(--coffee);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--coffee);
+    --bs-btn-hover-border-color: var(--coffee);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--coffee);
+    --bs-btn-active-border-color: var(--coffee);
+}
